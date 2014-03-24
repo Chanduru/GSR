@@ -9,13 +9,64 @@ public class QBactionLib {
 	public static WebDriver Driver; 
 	
 	
+	
+	//******************************************************************************************************************************************	
+	/**
+	 * Function to Login into Qbend application
+	 * @param slocator, sValue 
+	 */	
+	
+
+public boolean Login(String slocator, CharSequence[] sValue) throws Exception
+	{
+		try
+		{
+			System.out.println("Trying to Login Qbend :" +" with value = " + sValue);
+			Driver.findElement(By.xpath(slocator)).sendKeys(sValue);
+			System.out.println("Set text on field : " + slocator + " successful");
+			return true;
+		}
+		catch(Exception e)
+		{
+			String sMessage = e.getMessage();
+			//LastException.setLastError(sMessage);
+			throw new Exception(sMessage);
+		}
+				
+	}
+	
+	//******************************************************************************************************************************************	
+	/**
+	 * Function to Logout in an Qbend application
+	 * @param slocator, sValue 
+	 */	
+
+		public boolean Logout(String slocator) throws Exception
+		{
+		try
+		{
+			System.out.println("Trying to Logout Qbend ");
+			Driver.findElement(By.xpath(slocator)).click();
+			System.out.println("Logout successful");
+			return true;
+		}
+		catch(Exception e)
+		{
+			String sMessage = e.getMessage();
+			//LastException.setLastError(sMessage);
+			throw new Exception(sMessage);
+		}
+			
+}
+	
+	
 	//******************************************************************************************************************************************	
 		/**
 		 * Function to set text in an Qbend forms field
 		 * @param slocator, sValue 
 		 */	
 	
-	public boolean setText(String slocator, String sValue) throws Exception
+	public boolean setText(String slocator, CharSequence[] sValue) throws Exception
 	{
 		try
 		{
